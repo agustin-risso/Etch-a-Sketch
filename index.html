@@ -7,7 +7,22 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<div class="container"></div>
+		<h1>ETCH A SKETCH</h1>
+		<div id="mainContainer">
+			<div id="btnContainer">
+				<input type="color" />
+				<button id="eraserBtn">Eraser</button>
+				<button id="clearBtn">Clear</button>
+				<input type="range" id="sizeSlider" value="16" min="3" max="64" />
+			</div>
+			<div class="sketchContainer"></div>
+		</div>
+		<footer>
+			<p>
+				made with ♡ by
+				<a href="https://github.com/agustin-risso">&#60;agusdev&#62;</a>
+			</p>
+		</footer>
 		<script src="index.js"></script>
 	</body>
 </html>
