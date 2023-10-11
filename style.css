@@ -15,6 +15,7 @@ body {
 	align-items: center;
 	gap: 1rem;
 	background-color: #d3d2e3;
+	overflow-x: hidden;
 }
 
 header {
@@ -46,15 +47,23 @@ header h1 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	width: 700px;
 	gap: 2rem;
 }
 
 #sketchContainer {
+	margin-top: -1.5rem;
 	width: 30rem;
 	height: 30rem;
-	border: 1px solid transparent;
 	box-shadow: 0rem 0rem 0.5rem 0.15rem rgba(0, 0, 0, 0.15);
 	background-color: #eaeaea;
+	display: grid;
+	grid-template-columns: repeat(16, 1fr);
+	grid-template-rows: repeat(16, 1fr);
+}
+
+.square {
+	user-select: none;
 }
 
 #colorPicker {
@@ -66,6 +75,7 @@ header h1 {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	cursor: pointer;
+	outline: none;
 }
 
 #colorPicker::-webkit-color-swatch {
@@ -78,8 +88,9 @@ header h1 {
 	border: none;
 }
 
-#eraserBtn,
-#clearBtn {
+.eraserBtn,
+.colorBtn,
+.clearBtn {
 	width: 6rem;
 	height: 1.75rem;
 	color: #131313;
@@ -90,16 +101,47 @@ header h1 {
 	cursor: pointer;
 	transition: all 0.2s;
 }
-
-#eraserBtn:hover,
-#clearBtn:hover {
+.clearBtn {
+	width: 6rem;
+	height: 1.75rem;
+	color: #131313;
+	font-size: 1rem;
+	font-weight: 500;
+	border: 1px solid #131313;
+	border-radius: 0.4rem;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+.eraserBtn:hover,
+.colorBtn:hover,
+.clearBtn:hover {
 	transform: translate(7%, -7%);
 	box-shadow: -0.3rem 0.3rem 0rem 0.1rem #131313;
 }
 
-#eraserBtn:focus,
-#clearBtn:focus {
+.eraserBtn:focus,
+.colorBtn:focus,
+.clearBtn:focus {
 	outline: none;
+}
+
+.active {
+	background-color: #565656;
+	color: #fff;
+	font-weight: 700;
+	border: 1px solid #565656;
+}
+.active:hover {
+	transform: translate(7%, -7%);
+	box-shadow: -0.3rem 0.3rem 0rem 0.1rem #565656;
+}
+
+#size {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.3rem;
+	margin-top: 1.8rem;
 }
 
 #sizeSlider {
@@ -143,6 +185,13 @@ header h1 {
 	width: 16px;
 }
 
+#size p {
+	border: 1px solid #131313;
+	border-radius: 0.3rem;
+	padding: 0 0.6rem;
+	background-color: #fff;
+}
+
 footer {
 	width: 100%;
 	height: 5%;
@@ -154,4 +203,62 @@ footer {
 footer a {
 	font-weight: 700;
 	color: black;
+}
+
+@media (max-width: 1200px) {
+	#btnContainer {
+		width: 600px;
+	}
+}
+
+@media (max-width: 780px) {
+	#mainContainer {
+		flex-direction: row;
+		gap: 5rem;
+	}
+	#btnContainer {
+		flex-direction: column;
+		width: 50px;
+	}
+	#sketchContainer {
+		width: 20rem;
+		height: 20rem;
+	}
+}
+@media (max-width: 620px) {
+	#btnContainer {
+		transform: scale(0.75);
+	}
+	#sketchContainer {
+		width: 15rem;
+		height: 15rem;
+	}
+}
+
+@media (max-width: 460px) {
+	#mainContainer {
+		flex-direction: column;
+		gap: 1rem;
+	}
+	#btnContainer {
+		display: grid;
+		grid-template-columns: auto auto auto auto;
+		place-items: center;
+		gap: 0;
+		margin-bottom: 1rem;
+	}
+	.colorBtn {
+		grid-column-start: 2;
+		grid-column-end: 4;
+	}
+
+	.clearBtn {
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+
+	#size {
+		grid-column-start: 3;
+		grid-column-end: 5;
+	}
 }

@@ -10,10 +10,14 @@
 		<header><h1>ETCH A SKETCH</h1></header>
 		<div id="mainContainer">
 			<div id="btnContainer">
-				<input id="colorPicker" type="color" />
-				<button id="eraserBtn">Eraser</button>
-				<button id="clearBtn">Clear</button>
-				<input type="range" id="sizeSlider" value="16" min="3" max="64" />
+				<input id="colorPicker" type="color" value="#434343" />
+				<button class="colorBtn active">Color</button>
+				<button class="eraserBtn">Eraser</button>
+				<button class="clearBtn">Clear</button>
+				<div id="size">
+					<input type="range" id="sizeSlider" value="16" min="3" max="64" />
+					<p id="sizeValue">16x16</p>
+				</div>
 			</div>
 			<div id="sketchContainer"></div>
 		</div>
